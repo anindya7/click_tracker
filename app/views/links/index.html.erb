@@ -1,0 +1,14 @@
+<table id="t01">
+  <tr>
+    <th>Name</th>
+    <th>URL</th> 
+    <th>Tracking URL</th>
+  </tr>
+  <% @links.each do |link| %>
+    <tr>
+        <td><%= link.name %></td>
+        <td><%= link.url %></td> 
+        <td><%= link_to "clicktracker.com/#{link.token}", "clicktracker.com/#{link.token}" %></td>
+    </tr>
+  <% end %>
+</table>
