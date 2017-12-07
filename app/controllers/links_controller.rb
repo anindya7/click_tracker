@@ -1,6 +1,6 @@
 require 'uri'
 class LinksController < ApplicationController
-  before_action :authenticate_user! 
+  before_action :authenticate_user! except: redirect
   def index
     @links = Link.all
   end
