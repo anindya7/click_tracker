@@ -1,3 +1,4 @@
+require 'uri'
 class LinksController < ApplicationController
   before_action :authenticate_user! 
   def index
@@ -28,19 +29,20 @@ class LinksController < ApplicationController
 
   end 
   def redirect
-
+    ahoy.track "Link clicked", {token: params[:token]}, {}
+    
+    @destination = Link.where(token: params[:token]).first
+    redirect_to "http://#{@destination.url}"
   end
   def check_token
     link = Link.where(token: params[:token])
-    if link.any  
+    if link.any?  
       render json: false 
     else
       render json: true
     end
   end
-  def redirect
-
-  end
+  
   private
     def link_params
       params.require(:link).permit(:name, :url, :token)

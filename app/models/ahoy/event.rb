@@ -10,3 +10,4 @@ module Ahoy
     serialize :properties, JSON
   end
 end
+
