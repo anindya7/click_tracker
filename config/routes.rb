@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   root "links#index"
   get 'links/check/:token' => "links#check_token"
   get '/:token' => 'links#redirect'
-end
+  get 'hold/:token' => 'links#hold'
+  get 'show/:token' => 'links#show'
+ end

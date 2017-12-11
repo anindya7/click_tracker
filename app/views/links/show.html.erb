@@ -1,0 +1,47 @@
+<% content_for :page_name do %>
+  <li>VIEW CLICKS</li>
+  <% end %>
+
+<div class="row">
+              <div class=" no-padding    container-fixed-lg bg-white">
+            <div class="container">
+              <!-- START card -->
+              <div class="card card-transparent">
+                <div class="card-header ">
+                  <div class="card-title">Pages Default Tables Style
+                  </div>
+                </div>
+                <div class="card-block">
+                    <div class="table-responsive">
+                      <div id="stripedTable_wrapper" class="dataTables_wrapper no-footer"><table class="table table-striped dataTable no-footer" id="stripedTable" role="grid">
+                        <thead>
+                          <tr role="row">
+                              <th style="width:10%" class="sorting_asc" tabindex="0" aria-controls="stripedTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Title: activate to sort column descending">Name</th><th style="width: 134px;" class="sorting" tabindex="0" aria-controls="stripedTable" rowspan="1" colspan="1" aria-label="Places: activate to sort column ascending">URL</th><th style="width: 107px;" class="sorting" tabindex="0" aria-controls="stripedTable" rowspan="1" colspan="1" aria-label="Activities: activate to sort column ascending">Tracking URL</th></tr>
+                        </thead>
+                        <tbody>
+                          
+                          
+                          <% @clicks.each do |click| %>
+                          
+                        <tr role="row" >
+                            <td class="v-align-middle semi-bold sorting_1">
+                              <p><%= link.name %></p>
+                            </td>
+                            <td class="v-align-middle semi-bold sorting_1">
+                              <p><%= link.url %></p>  
+                            </td>
+                            <td class="v-align-middle semi-bold sorting_1">
+                              <p><%= link_to "blogtracker.herokuapp.com/#{link.token}", "blogtracker.herokuapp.com/#{link.token}" %></p>  
+                            </td>
+                          </tr>
+                          <%end%>
+                          </tbody>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              <!-- END card -->
+            </div>
+          </div>
+              
+            </div>

@@ -1,0 +1,17 @@
+
+<iframe id="holder" src=<%=@source.url%> frameborder="0" allowfullscreen"></iframe>
+<script>
+$(document).ready(
+    iframeResize()
+);
+function iframeResize()
+{
+
+$("#holder").css('height',window.innerHeight).css('width',window.innerWidth);
+
+}
+$(function() {
+                    window.onresize = iframeResize;
+                    iframeResize();
+                });
+</script>

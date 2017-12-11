@@ -1,8 +1,11 @@
 require 'uri'
 class LinksController < ApplicationController
   before_action :authenticate_user!, except: [:redirect]
+  
   def index
-    @links = Link.all
+    
+    @links = Link.where(user: current_user)
+    
   end
 
   def new
@@ -26,13 +29,20 @@ class LinksController < ApplicationController
   end
 
   def show
-
+    
+    @clicks=Visit.all
+    render :json => @clicks
   end 
   def redirect
-    ahoy.track "Link clicked", {token: params[:token]}, {}
+    ahoy.track "Link clicked", {token: params[:token]}
     
     @destination = Link.where(token: params[:token]).first
-    redirect_to "http://#{@destination.url}"
+    redirect_to @destination.url
+  end
+  def hold
+    ahoy.track "Cloaked link clicked", {token: params[:token]}
+    
+    @source = Link.where(token: params[:token]).first
   end
   def check_token
     link = Link.where(token: params[:token])
@@ -47,5 +57,8 @@ class LinksController < ApplicationController
     def link_params
       params.require(:link).permit(:name, :url, :token)
     end
+
+
+    
 
 end

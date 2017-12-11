@@ -16,3 +16,10 @@
 //= require bootstrap-sprockets
 //= require ahoy
 //= require_tree .
+//= require_tree ../javascripts/back
+$(document).ready(function(){
+    
+}
+
+
+);

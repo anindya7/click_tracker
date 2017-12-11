@@ -1,8 +1,42 @@
-<%= simple_form_for @link do |f| %>
-  <%= f.input :name %>
-  <%= f.input :url %>
-  <%= f.input :token %>
-  <%= f.input :id, :as => :hidden,:input_html => { :id => "input" } %>
- 
-  <%= f.submit 'Create', class: 'btn btn-primary' %>
-<% end %>
+<div class="row">
+       <div class="col-lg-6">
+                <!-- START card -->
+                <div class="card card-default">
+                  <div class="card-header ">
+                    <div class="card-title">ADD LINK</div>
+                  </div>
+                  <div class="card-block">
+                    <h5>ENTER LINK INFORMATION</h5>
+                    <%= simple_form_for @link do |f| %>
+                      <div class="form-group">
+                        <label>Link Name</label>
+                        <%= f.input :name ,class: 'form-control',label: false %>
+                        
+                      </div>
+                      <div class="form-group">
+                        <label>Link URL</label>
+                        <%= f.input :url, class: 'form-control' ,label: false %>
+                        
+                      </div>
+                      <div class="form-group">
+                        <label>Link Tracking Token</label>
+                        <span class="help">e.g. "www.clickhero.com/&lt;token goes here&gt;"</span>
+                        <%= f.input :token, class: 'form-control' ,label: false%>
+                      </div>
+                      
+                      
+                  <div class="form-group" style:padding-top="10px">  
+         <%= f.submit 'Create Link', class: 'btn btn-primary btn-cons' %>             
+                    
+                  </div>
+                  <% end %>
+                  </div>
+                </div>
+                <!-- END card -->
+              </div>       
+              
+            </div>
+
+
+
+
