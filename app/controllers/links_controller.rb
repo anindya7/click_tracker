@@ -41,8 +41,9 @@ class LinksController < ApplicationController
   end
   def hold
     ahoy.track "Cloaked link clicked", {token: params[:token]}
-    
+    # render :layout => false
     @source = Link.where(token: params[:token]).first
+    
   end
   def check_token
     link = Link.where(token: params[:token])
