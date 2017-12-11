@@ -30,7 +30,7 @@ class LinksController < ApplicationController
 
   def show
     
-    @clicks=Visit.all
+    @clicks=Visit.last
     render :json => @clicks
   end 
   def redirect
