@@ -34,7 +34,7 @@ class LinksController < ApplicationController
     render :json => @clicks
   end 
   def redirect
-    ahoy.track "Link clicked", {token: params[:token]}
+    ahoy.track "Link clicked", token: params[:token]
     
     @destination = Link.where(token: params[:token]).first
     redirect_to @destination.url
