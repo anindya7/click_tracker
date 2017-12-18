@@ -37,7 +37,7 @@ class LinksController < ApplicationController
     ahoy.track "Link clicked", {token: params[:token]}
     
     @destination = Link.where(token: params[:token]).first
-    render :plain => @destination.url
+    redirect_to @destination.url
   end
   def hold
     ahoy.track "Cloaked link clicked", {token: params[:token]}
