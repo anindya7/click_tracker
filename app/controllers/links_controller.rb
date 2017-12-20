@@ -1,7 +1,7 @@
 require 'uri'
 class LinksController < ApplicationController
   before_action :authenticate_user!, except: [:redirect]
-  
+  before_action :track_action
   def index
     
     @links = Link.where(user: current_user)
@@ -29,20 +29,29 @@ class LinksController < ApplicationController
   end
 
   def show
+    # render layout: false
+    @this_link=Link.where(token: params[:token]).first
     
-    @clicks=Visit.last
-    render :json => @clicks
+    @clicks=Ahoy::Event.where_properties(token: @this_link.token)
+    if @clicks
+      render json: @clicks
+    end
+    
   end 
   def redirect
     ahoy.track "Link clicked", {token: params[:token]}
     
+    
+
+
     @destination = Link.where(token: params[:token]).first
     redirect_to @destination.url
   end
   def hold
     ahoy.track "Cloaked link clicked", {token: params[:token]}
-    # render :layout => false
     @source = Link.where(token: params[:token]).first
+    render :layout => false
+    
     
   end
   def check_token

@@ -5,9 +5,9 @@ class ApplicationController < ActionController::Base
   protected
 
   def track_action
-  #   if ahoy.visit
-  #     ahoy.track "Viewed #{controller_path}##{action_name}", params: request.path_parameters
-  #   end
+    # if ahoy.visit
+    #   ahoy.track_visit
+    # end
   end
   
 end

@@ -1,5 +1,17 @@
+<!DOCTYPE html>
+<html class=" js no-touch csstransforms3d csstransitions">
 
-<iframe id="holder" src=<%=@source.url%> frameborder="0" allowfullscreen"></iframe>
+<head>
+<style>
+    html, body {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    width: 100%;
+    height: 100%;
+}
+</style>   
+<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js></script>
 <script>
 $(document).ready(
     iframeResize()
@@ -15,3 +27,8 @@ $(function() {
                     iframeResize();
                 });
 </script>
+</head>
+<body>
+<iframe id="holder" src=<%=@source.url%> seamless='seamless'  allowfullscreen style="display:block;margin: 0px;
+    padding: 0px;"></iframe>
+</body>
