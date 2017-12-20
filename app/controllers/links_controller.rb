@@ -39,7 +39,7 @@ class LinksController < ApplicationController
     
   end 
   def redirect
-    ahoy.track "Link clicked", {token: params[:token]}
+    ahoy.track "Link clicked", token: params[:token]
     
     
 
