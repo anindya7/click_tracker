@@ -7,8 +7,9 @@ class LinksController < ApplicationController
     @links = Link.where(user_id: current_user)
     if !@links
       render layout:false
+      render plain: "Links query unsuccessful"
     end
-    render plain: "Links query unsuccessful"
+    
   end
 
   def new
