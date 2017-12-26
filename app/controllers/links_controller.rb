@@ -4,7 +4,7 @@ class LinksController < ApplicationController
   before_action :track_action
   def index
     
-    @links = Link.where(user: current_user)
+    @links = Link.where(user_id: current_user.id)
     
   end
 
