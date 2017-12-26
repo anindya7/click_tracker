@@ -4,8 +4,11 @@ class LinksController < ApplicationController
   before_action :track_action
   def index
     
-    @links = Link.where(user_id: current_user.id)
-    
+    @links = Link.where(user_id: current_user)
+    if !@links
+      render layout:false
+    end
+    render plain: "Links query unsuccessful"
   end
 
   def new
