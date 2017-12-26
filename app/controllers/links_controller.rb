@@ -39,11 +39,13 @@ class LinksController < ApplicationController
     @clicks=Ahoy::Event.where_properties(token: @this_link.token)
     if @clicks
       render json: @clicks
+    else
+      render plain: "Click event not found"
     end
     
   end 
   def redirect
-    ahoy.track "Link clicked", token: params[:token]
+    ahoy.track "Link clicked", {token: params[:token]}
     
     
 
